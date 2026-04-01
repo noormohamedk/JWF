@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/featured-projects/(.*)", "destination": "/featured-projects/$1.html" }
+  ]
+}
