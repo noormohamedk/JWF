@@ -1,0 +1,2228 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Jasoor Welfare Foundation &ndash; Empowering Communities</title>
+<meta name="description" content="Jasoor Welfare Foundation is committed to peace, human rights, and sustainable development through community-driven programs." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+<style>
+/* ===== CSS VARIABLES ===== */
+:root {
+  --bg: #ffffff;
+  --bg2: #f7f6f2;
+  --bg3: #eeecea;
+  --text: #111111;
+  --text2: #444444;
+  --text3: #777777;
+  --accent: #c8891a;
+  --accent2: #1a6c4a;
+  --card-bg: #ffffff;
+  --card-border: #e8e5e0;
+  --nav-bg: rgba(255,255,255,0.96);
+  --shadow: 0 4px 24px rgba(0,0,0,0.08);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.12);
+  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --radius: 12px;
+  --radius-lg: 20px;
+}
+[data-theme="dark"] {
+  --bg: #0d0d0d;
+  --bg2: #141414;
+  --bg3: #1c1c1c;
+  --text: #f0ede8;
+  --text2: #b8b4ac;
+  --text3: #7a7670;
+  --accent: #e8a832;
+  --accent2: #2ecc88;
+  --card-bg: #1a1a1a;
+  --card-border: #2a2a2a;
+  --nav-bg: rgba(13,13,13,0.96);
+  --shadow: 0 4px 24px rgba(0,0,0,0.4);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,0.6);
+}
+
+/* ===== RESET & BASE ===== */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; font-size: 16px; }
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition: background var(--transition), color var(--transition);
+  overflow-x: hidden;
+}
+img { max-width: 100%; display: block; }
+a { text-decoration: none; color: inherit; }
+ul { list-style: none; }
+button { cursor: pointer; border: none; background: none; font-family: inherit; }
+input, textarea, select { font-family: inherit; }
+
+/* ===== UTILITY ===== */
+.container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--text);
+  margin-bottom: 16px;
+}
+.section-sub {
+  font-size: 1.05rem;
+  color: var(--text2);
+  line-height: 1.7;
+  max-width: 600px;
+}
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 28px;
+  border-radius: 50px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  transition: all var(--transition);
+}
+.btn-primary {
+  background: var(--accent);
+  color: #fff;
+}
+.btn-primary:hover { background: #a8710f; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(200,137,26,0.35); }
+.btn-outline {
+  border: 2px solid var(--text);
+  color: var(--text);
+}
+.btn-outline:hover { background: var(--text); color: var(--bg); transform: translateY(-2px); }
+.btn-white {
+  background: #fff;
+  color: #111;
+}
+.btn-white:hover { background: #f0ede8; transform: translateY(-2px); }
+.btn-outline-white {
+  border: 2px solid rgba(255,255,255,0.7);
+  color: #fff;
+}
+.btn-outline-white:hover { background: rgba(255,255,255,0.15); }
+
+section { padding: 96px 0; }
+
+/* ===== NAVBAR ===== */
+#navbar {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: var(--nav-bg);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--card-border);
+  transition: background var(--transition), box-shadow var(--transition);
+}
+#navbar.scrolled { box-shadow: var(--shadow); }
+.nav-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 72px;
+  gap: 16px;
+}
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+.nav-logo-icon {
+  width: 50px; height: 50px;
+  border-radius: 10px;
+  overflow: hidden;
+  background: transparent;
+  display: flex; align-items: center; justify-content: center;
+}
+.nav-logo-icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.nav-logo-text { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; line-height: 1.1; }
+.nav-logo-text span { display: block; font-family: 'DM Sans', sans-serif; font-size: 0.65rem; font-weight: 500; letter-spacing: 0.12em; text-transform: uppercase; color: var(--text3); }
+
+.nav-menu { display: flex; align-items: center; gap: 4px; }
+.nav-item { position: relative; }
+.nav-link {
+  display: block;
+  padding: 8px 14px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text2);
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+.nav-link:hover, .nav-link.active { color: var(--text); background: var(--bg2); }
+.nav-dropdown { position: relative; }
+.nav-dropdown > .nav-link::after { content: ' \25BE'; font-size: 0.7rem; }
+.dropdown-menu {
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-lg);
+  min-width: 160px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: all 0.2s;
+  z-index: 100;
+}
+.nav-dropdown:hover .dropdown-menu { opacity: 1; pointer-events: auto; transform: translateY(0); }
+.dropdown-menu a {
+  display: block;
+  padding: 10px 18px;
+  font-size: 0.88rem;
+  color: var(--text2);
+  transition: all 0.15s;
+}
+.dropdown-menu a:hover { background: var(--bg2); color: var(--text); }
+
+.nav-actions { display: flex; align-items: center; gap: 10px; }
+.btn-donate {
+  background: var(--accent);
+  color: #fff;
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+.btn-donate:hover { background: #a8710f; transform: translateY(-1px); }
+.btn-join {
+  border: 1.5px solid var(--card-border);
+  color: var(--text);
+  padding: 9px 20px;
+  border-radius: 50px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all var(--transition);
+}
+.btn-join:hover { border-color: var(--text); background: var(--bg2); }
+
+.theme-toggle {
+  width: 38px; height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--card-border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  color: var(--text2);
+  transition: all 0.2s;
+  background: var(--bg2);
+}
+.theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
+
+.hamburger { display: none; flex-direction: column; gap: 5px; padding: 6px; }
+.hamburger span { display: block; width: 22px; height: 2px; background: var(--text); border-radius: 2px; transition: all 0.3s; }
+
+/* ===== HERO SLIDER ===== */
+#hero {
+  position: relative;
+  height: 100vh;
+  min-height: 620px;
+  overflow: hidden;
+}
+.slides-track { display: flex; height: 100%; transition: transform 0.9s cubic-bezier(0.77,0,0.18,1); }
+.slide {
+  min-width: 100%;
+  height: 100%;
+  position: relative;
+}
+.slide-bg {
+  width: 100%; height: 100%;
+  background-size: cover;
+  background-position: center 35%;
+  transform: scale(1.04);
+  transition: transform 8s ease;
+}
+.slide.active .slide-bg { transform: scale(1); }
+.slide-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.35) 60%, transparent 100%);
+  display: flex;
+  align-items: center;
+}
+.slide-content {
+  color: #fff;
+  max-width: 680px;
+  padding: 0 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.9s 0.3s ease;
+}
+.slide.active .slide-content { opacity: 1; transform: translateY(0); }
+.slide-tag {
+  display: inline-block;
+  background: var(--accent);
+  color: #fff;
+  padding: 4px 14px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.slide-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.4rem, 5.5vw, 4rem);
+  font-weight: 900;
+  line-height: 1.1;
+  margin-bottom: 18px;
+  text-shadow: 0 2px 20px rgba(0,0,0,0.3);
+}
+.slide-sub {
+  font-size: 1.1rem;
+  opacity: 0.88;
+  line-height: 1.65;
+  margin-bottom: 32px;
+}
+.slide-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+.hero-nav {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 10px;
+  z-index: 10;
+}
+.hero-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.4);
+  border: none;
+  transition: all 0.3s;
+}
+.hero-dot.active { background: #fff; width: 24px; border-radius: 4px; }
+.hero-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,0.25);
+  color: #fff;
+  font-size: 1.1rem;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.2s;
+  z-index: 10;
+}
+.hero-arrow:hover { background: var(--accent); border-color: var(--accent); }
+.hero-prev { left: 24px; }
+.hero-next { right: 24px; }
+
+/* ===== STATS BAR ===== */
+.stats-bar {
+  background: var(--accent);
+  padding: 0;
+}
+.stats-inner {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+.stat-item {
+  padding: 32px 24px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.2);
+  color: #fff;
+}
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Times New Roman', Times, serif; font-size: 2.4rem; font-weight: 900; line-height: 1; margin-bottom: 6px; }
+.stat-label { font-size: 0.82rem; font-weight: 500; opacity: 0.85; letter-spacing: 0.04em; }
+
+/* ===== ABOUT ===== */
+#about { background: var(--bg); }
+.about-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.about-img-wrap {
+  position: relative;
+}
+.about-img {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  aspect-ratio: 4/3;
+  background: linear-gradient(135deg, #c8891a22 0%, #1a6c4a22 100%);
+}
+.about-img-placeholder {
+  width: 100%; height: 100%;
+  background: linear-gradient(135deg, #e8d5b0 0%, #b8d4c8 100%);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 5rem;
+  color: rgba(255,255,255,0.6);
+}
+.about-badge {
+  position: absolute;
+  bottom: -20px; right: -20px;
+  background: var(--accent2);
+  color: #fff;
+  padding: 20px 24px;
+  border-radius: var(--radius);
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+}
+.about-badge-num { font-family: 'Times New Roman', Times, serif; font-size: 2rem; font-weight: 900; }
+.about-badge-txt { font-size: 0.78rem; font-weight: 600; opacity: 0.9; }
+.about-text .section-sub { max-width: 100%; }
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 28px; }
+.mv-card {
+  background: var(--bg2);
+  border-radius: var(--radius);
+  padding: 20px;
+  border: 1px solid var(--card-border);
+}
+.mv-card h4 { font-size: 0.82rem; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin-bottom: 8px; }
+.mv-card p { font-size: 0.9rem; color: var(--text2); line-height: 1.6; }
+
+/* ===== FOCUS AREAS ===== */
+#focus { background: var(--bg2); }
+.focus-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.focus-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 40px 32px;
+  text-align: center;
+  transition: all var(--transition);
+  cursor: default;
+}
+.focus-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); border-color: var(--accent); }
+.focus-icon {
+  width: 72px; height: 72px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 24px;
+  transition: all var(--transition);
+}
+.focus-card:hover .focus-icon { transform: scale(1.1); }
+.focus-icon.peace { background: #fff3e0; color: #e67e22; }
+.focus-icon.rights { background: #fce4ec; color: #c0392b; }
+.focus-icon.sustain { background: #e8f5e9; color: #27ae60; }
+.focus-icon.edu { background: #e3f2fd; color: #1565c0; }
+.focus-icon.youth { background: #f3e5f5; color: #7b1fa2; }
+.focus-icon.women { background: #fce4ec; color: #ad1457; }
+.focus-card h3 { font-family: 'Playfair Display', serif; font-size: 1.35rem; font-weight: 700; margin-bottom: 12px; }
+.focus-card p { font-size: 0.9rem; color: var(--text2); line-height: 1.7; }
+
+/* ===== WHAT WE DO ===== */
+#what-we-do { background: var(--bg); }
+.wwd-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.wwd-card {
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 32px;
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  transition: all var(--transition);
+}
+.wwd-card:hover { box-shadow: var(--shadow); transform: translateX(4px); }
+.wwd-num {
+  font-family: 'Times New Roman', Times, serif;
+  font-size: 2.5rem;
+  font-weight: 900;
+  color: var(--accent);
+  opacity: 0.25;
+  line-height: 1;
+  flex-shrink: 0;
+  width: 48px;
+}
+.wwd-body h3 { font-size: 1.05rem; font-weight: 600; margin-bottom: 8px; }
+.wwd-body p { font-size: 0.9rem; color: var(--text2); line-height: 1.65; }
+
+/* ===== PROJECTS ===== */
+#projects { background: var(--bg2); }
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.project-card {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  transition: all var(--transition);
+}
+.project-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.project-img img { transition: transform var(--transition); }
+.project-card:hover .project-img img { transform: scale(1.05); }
+.project-img {
+  height: 200px;
+  overflow: hidden;
+}
+.project-img-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3rem;
+}
+.project-body { padding: 24px; }
+.project-tag {
+  display: inline-block;
+  background: var(--bg2);
+  color: var(--accent);
+  padding: 3px 10px;
+  border-radius: 50px;
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+.project-body h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+.project-body p { font-size: 0.88rem; color: var(--text2); line-height: 1.6; margin-bottom: 16px; }
+.project-link { font-size: 0.85rem; font-weight: 600; color: var(--accent); display: inline-flex; align-items: center; gap: 6px; transition: gap 0.2s; }
+.project-link:hover { gap: 10px; }
+
+/* ===== EVENTS ===== */
+#events { background: var(--bg); }
+.events-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 40px; }
+.year-filters { display: flex; gap: 8px; flex-wrap: wrap; }
+.year-btn {
+  padding: 7px 18px;
+  border-radius: 50px;
+  border: 1.5px solid var(--card-border);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--text2);
+  background: transparent;
+  transition: all 0.2s;
+}
+.year-btn.active, .year-btn:hover { background: var(--accent); color: #fff; border-color: var(--accent); }
+.events-list { display: flex; flex-direction: column; gap: 16px; }
+.event-card {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius);
+  padding: 24px 28px;
+  transition: all var(--transition);
+}
+.event-card:hover { box-shadow: var(--shadow); transform: translateX(4px); border-color: var(--accent); }
+.event-date-box {
+  text-align: center;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 10px;
+  padding: 10px 16px;
+  flex-shrink: 0;
+  min-width: 64px;
+}
+.event-date-day { font-family: 'Times New Roman', Times, serif; font-size: 1.8rem; font-weight: 900; line-height: 1; }
+.event-date-mon { font-family: 'Times New Roman', Times, serif; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; }
+.event-info { flex: 1; }
+.event-info h3 { font-size: 1rem; font-weight: 600; margin-bottom: 6px; }
+.event-meta { display: flex; gap: 16px; flex-wrap: wrap; }
+.event-meta span { font-family: 'Times New Roman', Times, serif; font-size: 0.82rem; color: var(--text3); display: flex; align-items: center; gap: 5px; }
+.event-badge {
+  padding: 4px 12px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  background: var(--bg3);
+  color: var(--text3);
+}
+.event-badge.upcoming { background: #e8f5e9; color: #27ae60; }
+[data-theme="dark"] .event-badge.upcoming { background: #1a3d2a; color: #4ecca3; }
+
+/* ===== TEAM ===== */
+#team { background: var(--bg2); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.team-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  text-align: center;
+  transition: all var(--transition);
+}
+.team-card:hover { transform: translateY(-8px); box-shadow: var(--shadow-lg); }
+.team-avatar {
+  width: 180px;
+  aspect-ratio: 2 / 3;
+  height: auto;
+  overflow: hidden;
+  position: relative;
+  border-radius: var(--radius-lg);
+  margin: 0 auto;
+}
+.team-avatar-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 3.5rem;
+  transition: transform var(--transition);
+}
+.team-avatar-img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition);
+  border: 4px solid #fff;
+  box-shadow: inset 0 0 0 1px var(--card-border), 0 8px 16px rgba(0,0,0,0.1);
+  border-radius: 18px;
+}
+.team-card:hover .team-avatar-ph, .team-card:hover .team-avatar-img { transform: scale(1.05); }
+.team-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.team-card:hover .team-overlay { opacity: 1; }
+.contact-popup {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.72);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity var(--transition), transform var(--transition);
+  transform: scale(0.95);
+  pointer-events: none;
+}
+.team-card.active .contact-popup {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+.clickable-avatar { cursor: pointer; }
+.team-social {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.15);
+  -webkit-backdrop-filter: blur(4px);
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+.team-social:hover { background: var(--accent); }
+.team-body { padding: 20px; }
+.team-body h3 { font-size: 1rem; font-weight: 600; margin-bottom: 4px; }
+.team-body p { font-size: 0.82rem; color: var(--text3); }
+.team-contact { font-family: 'Times New Roman', Times, serif; font-size: 0.78rem; color: var(--text3); margin: 2px 0 0; }
+
+/* ===== BLOG ===== */
+#team { background: var(--bg2); }
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+@media (max-width: 1000px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 680px) {
+  .team-grid { grid-template-columns: 1fr; }
+}
+
+#blog { background: var(--bg); }
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-top: 56px;
+}
+.blog-card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  transition: all var(--transition);
+  cursor: pointer;
+}
+.blog-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-lg); }
+.blog-img {
+  height: 180px;
+  overflow: hidden;
+}
+.blog-img-ph {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 2.5rem;
+  transition: transform var(--transition);
+}
+.blog-card:hover .blog-img-ph { transform: scale(1.06); }
+.blog-body { padding: 24px; }
+.blog-title-with-image { display: flex; align-items: center; gap: 10px; margin-bottom: 8px; }
+.blog-title-img { width: 40px; height: 40px; border-radius: 8px; object-fit: cover; }
+.blog-cat {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.blog-body h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; margin-bottom: 10px; line-height: 1.35; }
+.blog-body p { font-size: 0.88rem; color: var(--text2); line-height: 1.6; margin-bottom: 14px; }
+.blog-footer { display: flex; align-items: center; justify-content: space-between; }
+.blog-date { font-size: 0.8rem; color: var(--text3); }
+.blog-read { font-size: 0.82rem; font-weight: 600; color: var(--accent); }
+
+/* ===== DONATE SECTION ===== */
+#donate {
+  background: linear-gradient(135deg, #1a1a1a 0%, #2d1f0a 50%, #0a1f15 100%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+#donate::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at 30% 50%, rgba(200,137,26,0.15) 0%, transparent 60%),
+              radial-gradient(ellipse at 70% 50%, rgba(26,108,74,0.15) 0%, transparent 60%);
+}
+.donate-inner {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 72px;
+  align-items: center;
+}
+.donate-left .section-title { color: #fff; }
+.donate-left .section-sub { color: rgba(255,255,255,0.7); max-width: 100%; }
+.donate-features { margin-top: 32px; display: flex; flex-direction: column; gap: 14px; }
+.donate-feat { display: flex; align-items: center; gap: 12px; font-size: 0.9rem; color: rgba(255,255,255,0.85); }
+.donate-feat i { color: var(--accent); font-size: 1rem; }
+.donate-form-wrap {
+  background: rgba(255,255,255,0.06);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+.donate-form-wrap h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; color: #fff; margin-bottom: 8px; }
+.donate-form-wrap p { font-size: 0.88rem; color: rgba(255,255,255,0.6); margin-bottom: 28px; }
+.amount-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+.amount-btn {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.amount-btn:hover, .amount-btn.selected { background: var(--accent); border-color: var(--accent); color: #fff; }
+
+/* ===== FORMS ===== */
+.form-group { margin-bottom: 16px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+.form-label { display: block; font-size: 0.82rem; font-weight: 600; margin-bottom: 6px; color: rgba(255,255,255,0.7); }
+.form-label-dark { color: var(--text2); }
+.form-input {
+  width: 100%;
+  padding: 11px 14px;
+  border-radius: 8px;
+  border: 1.5px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  outline: none;
+}
+.form-input::placeholder { color: rgba(255,255,255,0.35); }
+.form-input:focus { border-color: var(--accent); }
+.form-input-light {
+  border-color: var(--card-border);
+  background: var(--bg);
+  color: var(--text);
+}
+.form-input-light::placeholder { color: var(--text3); }
+.form-input-light:focus { border-color: var(--accent); }
+textarea.form-input { resize: vertical; min-height: 100px; }
+.form-error { font-size: 0.78rem; color: #ff6b6b; margin-top: 4px; display: none; }
+.form-error.show { display: block; }
+.form-success {
+  text-align: center;
+  padding: 24px;
+  display: none;
+}
+.form-success.show { display: block; }
+.form-success i { font-size: 3rem; color: var(--accent2); margin-bottom: 12px; }
+.form-success h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 6px; }
+.form-success p { font-size: 0.9rem; color: rgba(255,255,255,0.7); }
+
+/* ===== JOIN US ===== */
+#join { background: var(--bg2); }
+.join-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: start; }
+.join-right {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+  box-shadow: var(--shadow);
+}
+.join-right h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 6px; }
+.join-right > p { font-size: 0.9rem; color: var(--text2); margin-bottom: 28px; }
+
+/* ===== CONTACT ===== */
+#contact { background: var(--bg); }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.4fr; gap: 72px; margin-top: 56px; }
+.contact-info h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; }
+.contact-items { display: flex; flex-direction: column; gap: 20px; }
+.contact-item { display: flex; gap: 16px; align-items: flex-start; }
+.contact-icon {
+  width: 44px; height: 44px;
+  border-radius: 10px;
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--accent);
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+.contact-item h4 { font-size: 0.85rem; font-weight: 600; margin-bottom: 3px; }
+.contact-item p { font-size: 0.88rem; color: var(--text2); }
+.map-embed {
+  margin-top: 32px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--card-border);
+  height: 180px;
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text3);
+  font-size: 0.9rem;
+}
+.contact-form-wrap {
+  background: var(--bg2);
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 40px;
+}
+.contact-form-wrap h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 24px; }
+
+/* ===== FOOTER ===== */
+#footer { background: var(--text); color: #f0ede8; padding: 72px 0 32px; }
+[data-theme="dark"] #footer { background: #050505; }
+.footer-grid { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 56px; }
+.footer-brand .nav-logo-icon { background: var(--accent); }
+.footer-brand .nav-logo-text { color: #f0ede8; }
+.footer-brand .nav-logo-text span { color: rgba(240,237,232,0.5); }
+.footer-desc { font-size: 0.88rem; color: rgba(240,237,232,0.55); line-height: 1.7; margin-top: 16px; margin-bottom: 24px; }
+.footer-socials { display: flex; gap: 10px; }
+.footer-social {
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  border: 1px solid rgba(240,237,232,0.2);
+  display: flex; align-items: center; justify-content: center;
+  color: rgba(240,237,232,0.6);
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+.footer-social:hover { background: var(--accent); border-color: var(--accent); color: #fff; }
+.footer-col h4 { font-size: 0.8rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: rgba(240,237,232,0.45); margin-bottom: 20px; }
+.footer-links { display: flex; flex-direction: column; gap: 10px; }
+.footer-links a { font-size: 0.88rem; color: rgba(240,237,232,0.65); transition: color 0.2s; }
+.footer-links a:hover { color: var(--accent); }
+.footer-bottom {
+  border-top: 1px solid rgba(240,237,232,0.1);
+  padding-top: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.footer-copy { font-size: 0.82rem; color: rgba(240,237,232,0.4); }
+.footer-legal { display: flex; gap: 20px; }
+.footer-legal a { font-size: 0.82rem; color: rgba(240,237,232,0.4); transition: color 0.2s; }
+.footer-legal a:hover { color: rgba(240,237,232,0.7); }
+
+/* ===== MODAL ===== */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,0.7);
+  -webkit-backdrop-filter: blur(6px);
+  backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: flex; align-items: center; justify-content: center;
+  padding: 24px;
+  opacity: 0; pointer-events: none;
+  transition: opacity 0.3s;
+}
+.modal-overlay.open { opacity: 1; pointer-events: auto; }
+.modal {
+  background: var(--card-bg);
+  border-radius: var(--radius-lg);
+  max-width: 520px;
+  width: 100%;
+  padding: 40px;
+  position: relative;
+  transform: translateY(20px);
+  transition: transform 0.3s;
+}
+.modal-overlay.open .modal { transform: translateY(0); }
+.modal-close {
+  position: absolute;
+  top: 16px; right: 16px;
+  width: 36px; height: 36px;
+  border-radius: 50%;
+  background: var(--bg2);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--text2);
+  font-size: 1rem;
+  transition: all 0.2s;
+}
+.modal-close:hover { background: var(--bg3); color: var(--text); }
+.modal h3 { font-family: 'Playfair Display', serif; font-size: 1.6rem; font-weight: 700; margin-bottom: 6px; }
+.modal > p { font-size: 0.9rem; color: var(--text2); margin-bottom: 28px; }
+
+/* ===== SCROLL REVEAL ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible { opacity: 1; transform: translateY(0); }
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+.reveal-delay-4 { transition-delay: 0.4s; }
+
+/* ===== BACK TO TOP ===== */
+#back-top {
+  position: fixed;
+  bottom: 28px; right: 28px;
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem;
+  box-shadow: var(--shadow);
+  opacity: 0; pointer-events: none;
+  transition: all 0.3s;
+  z-index: 900;
+}
+#back-top.visible { opacity: 1; pointer-events: auto; }
+#back-top:hover { transform: translateY(-3px); }
+
+/* ===== MOBILE NAV ===== */
+.mobile-nav {
+  position: fixed;
+  top: 72px; left: 0; right: 0;
+  background: var(--nav-bg);
+  border-bottom: 1px solid var(--card-border);
+  z-index: 999;
+  padding: 16px 24px 24px;
+  transform: translateY(-110%);
+  transition: transform 0.3s;
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+.mobile-nav.open { transform: translateY(0); }
+.mobile-nav-links { display: flex; flex-direction: column; gap: 4px; margin-bottom: 16px; }
+.mobile-nav-link { padding: 10px 12px; font-size: 0.95rem; font-weight: 500; color: var(--text2); border-radius: 8px; display: block; }
+.mobile-nav-link:hover { background: var(--bg2); color: var(--text); }
+.mobile-nav-actions { display: flex; gap: 10px; }
+.mobile-nav-actions .btn-donate, .mobile-nav-actions .btn-join { flex: 1; text-align: center; justify-content: center; }
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1024px) {
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 768px) {
+  section { padding: 64px 0; }
+  .nav-menu, .nav-actions { display: none; }
+  .hamburger { display: flex; }
+  .stats-inner { grid-template-columns: repeat(2, 1fr); }
+  .stat-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.2); }
+  .about-grid, .donate-inner, .join-inner, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+  .about-badge { right: 0; bottom: -10px; }
+  .focus-grid { grid-template-columns: 1fr; }
+  .wwd-grid { grid-template-columns: 1fr; }
+  .projects-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .team-grid { grid-template-columns: repeat(2, 1fr); }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+  .events-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .form-row { grid-template-columns: 1fr; }
+  .footer-bottom { flex-direction: column; text-align: center; }
+  .mv-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .slide-content { padding: 0 20px; }
+  .hero-arrow { display: none; }
+  .team-grid { grid-template-columns: 1fr; }
+  .amount-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* ===== INLINE STYLE FIXES ===== */
+.slide-bg-1 { background: linear-gradient(135deg, #1a3a2a 0%, #2d5a3d 40%, #4a8c5c 100%); }
+.slide-bg-2 { background: linear-gradient(135deg, #1a1f3a 0%, #2d3a5a 40%, #4a5c8c 100%); }
+.slide-bg-3 { background: linear-gradient(135deg, #3a1a1a 0%, #5a2d2d 40%, #8c4a4a 100%); }
+.section-sub-margin-top { margin-top:14px; }
+.text-center { text-align:center; }
+.section-sub-center { margin:0 auto; }
+.grid-two-cols { display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center; }
+.margin-top-56 { margin-top:56px; }
+.flex-end-between-mb56 { display:flex; align-items:flex-end; justify-content:space-between; margin-bottom:56px; }
+.mb-0 { margin-bottom:0; }
+.project-img-1 { background:linear-gradient(135deg,#e8f5e9,#c8e6c9); }
+.project-img-2 { background:linear-gradient(135deg,#fce4ec,#f8bbd9); }
+.project-img-3 { background:linear-gradient(135deg,#e3f2fd,#bbdefb); }
+.team-avatar-1 { background:linear-gradient(135deg,#e8d5b0,#c8a87a); }
+.team-avatar-2 { background:linear-gradient(135deg,#f8bbd9,#e48cae); }
+.team-avatar-3 { background:linear-gradient(135deg,#bbdefb,#82b1ff); }
+.team-avatar-4 { background:linear-gradient(135deg,#c8e6c9,#81c784); }
+.blog-img-1 { background:linear-gradient(135deg,#e8f5e9,#a5d6a7); }
+.blog-img-2 { background:linear-gradient(135deg,#fce4ec,#f48fb1); }
+.blog-img-3 { background:linear-gradient(135deg,#e3f2fd,#90caf9); }
+.section-label-accent { color:var(--accent); }
+.btn-full-center { width:100%; justify-content:center; }
+.text-white { color:#fff; }
+.flex-col-gap20-mt32 { margin-top:32px; display:flex; flex-direction:column; gap:20px; }
+.flex-gap14-start { display:flex; gap:14px; align-items:flex-start; }
+.icon-box { width:44px; height:44px; border-radius:10px; background:var(--bg3); border:1px solid var(--card-border); display:flex; align-items:center; justify-content:center; color:var(--accent); flex-shrink:0; }
+.h4-small { font-size:0.95rem; font-weight:600; margin-bottom:4px; }
+.p-small { font-size:0.88rem; color:var(--text2); }
+.form-success-text { color:var(--text); }
+.icon-accent2 { color:var(--accent2); }
+.h4-text { color:var(--text); }
+.p-text2 { color:var(--text2); }
+.icon-large { font-size:2rem; margin-bottom:8px; display:block; color:var(--accent); }
+.icon-large-accent2 { color:var(--accent2); font-size:3rem; margin-bottom:12px; display:block; }
+.h4-large-text { color:var(--text); font-size:1.2rem; margin-bottom:6px; }
+.nav-logo-mb { margin-bottom:16px; display:inline-flex; }
+.nav-text { color:#f0ede8; }
+.nav-span { color:rgba(240,237,232,0.45); }
+</style>
+</head>
+<body>
+
+<!-- ===== NAVBAR ===== -->
+<nav id="navbar">
+  <div class="container">
+    <div class="nav-inner">
+      <a href="#hero" class="nav-logo" aria-label="Jasoor Welfare Foundation home">
+        <div class="nav-logo-icon">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\main\jwf logo.jpeg" alt="Jasoor Welfare Foundation Logo" class="nav-logo-img">
+        </div>
+        <div class="nav-logo-text">
+          JASOOR 
+          <span>Welfare Foundation</span>
+        </div>
+      </a>
+
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="#hero" class="nav-link active">Home</a></li>
+        <li class="nav-item"><a href="#about" class="nav-link">About</a></li>
+        <li class="nav-item"><a href="#projects" class="nav-link">Projects</a></li>
+        <li class="nav-item nav-dropdown">
+          <a href="#events" class="nav-link">Events</a>
+        </li>
+        <li class="nav-item"><a href="#blog" class="nav-link">Blog</a></li>
+        <li class="nav-item"><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" title="Toggle theme" aria-label="Toggle theme" aria-pressed="false">
+          <i class="fas fa-moon"></i>
+        </button>
+        <a href="#join" class="btn-join">Join Us</a>
+        <button class="btn-donate" type="button" onclick="openModal('donateModal')">Donate</button>
+      </div>
+
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open menu" aria-controls="mobileNav" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" aria-hidden="true">
+  <div class="mobile-nav-links">
+    <a href="#hero" class="mobile-nav-link" onclick="closeMobile()">Home</a>
+    <a href="#about" class="mobile-nav-link" onclick="closeMobile()">About</a>
+    <a href="#projects" class="mobile-nav-link" onclick="closeMobile()">Projects</a>
+    <a href="#events" class="mobile-nav-link" onclick="closeMobile()">Events</a>
+    <a href="#blog" class="mobile-nav-link" onclick="closeMobile()">Blog</a>
+    <a href="#contact" class="mobile-nav-link" onclick="closeMobile()">Contact</a>
+  </div>
+  <div class="mobile-nav-actions">
+    <button class="btn-donate" type="button" onclick="openModal('donateModal');closeMobile()">Donate</button>
+    <a href="#join" class="btn-join" onclick="closeMobile()">Join Us</a>
+  </div>
+</div>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="slides-track" id="slidesTrack">
+    <div class="slide active">
+      <div class="slide-bg" style="background-image: url('D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\main\\JWF GROUP PIC.jpeg'); background-size: cover; background-position: center 35%; filter: brightness(0.55);"></div>
+      <div class="slide-overlay">
+        <div class="container">
+          <div class="slide-content">
+            <span class="slide-tag">Welcome</span>
+            <h1 class="slide-title">Jasoor Welfare Foundation</h1>
+            <p class="slide-sub">Building a better future for communities worldwide.</p>
+            <div class="slide-btns">
+              <button class="btn btn-white" type="button" onclick="openModal('donateModal')"><i class="fas fa-heart"></i> Donate Now</button>
+              <a href="#about" class="btn btn-outline-white">Learn More</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/10 X 8 copy.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/10X8 ramazan welcome copy.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/10x8 seminar class 1.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/10x8 mumtaj mam class copy.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/8x10 tnpsc ad copy.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/ramalan kit copy.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+    <div class="slide">
+      <div class="slide-bg" style="background-image: url('D:/Download/jasoor-welfare-foundation.html/assets/images/poster/3 x 2 amp copy.jpg.jpeg'); background-size: contain; background-position: center; background-repeat: no-repeat;"></div>
+    </div>
+  </div>
+  <button class="hero-arrow hero-prev" type="button" onclick="changeSlide(-1)" aria-label="Previous slide"><i class="fas fa-chevron-left"></i></button>
+  <button class="hero-arrow hero-next" type="button" onclick="changeSlide(1)" aria-label="Next slide"><i class="fas fa-chevron-right"></i></button>
+  <div class="hero-nav" id="heroNav"></div>
+</section>
+
+<!-- ===== STATS BAR ===== -->
+<div class="stats-bar">
+  <div class="container">
+    <div class="stats-inner">
+      <div class="stat-item reveal">
+        <div class="stat-num">100+</div>
+        <div class="stat-label">Beneficiaries Served</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-1">
+        <div class="stat-num">20+</div>
+        <div class="stat-label">Projects Completed</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-2">
+        <div class="stat-num">1</div>
+        <div class="stat-label">Years of Service</div>
+      </div>
+      <div class="stat-item reveal reveal-delay-3">
+        <div class="stat-num">5</div>
+        <div class="stat-label">Partner Organizations</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-wrap reveal">
+        <div class="about-img">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\main\OFF OPEN.jpeg" alt="Jasoor Welfare Foundation Group" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-lg);" />
+        </div>
+        <div class="about-badge">
+          <div class="about-badge-num">2025</div>
+          <div class="about-badge-txt">Est. Year</div>
+        </div>
+      </div>
+      <div class="about-text reveal reveal-delay-1">
+        <div class="section-label">Who We Are</div>
+        <h2 class="section-title">A Foundation Built on<br>Service & Compassion</h2>
+        <p class="section-sub">Jasoor Welfare Foundation is a non-governmental organization dedicated to fostering peace, protecting human rights, and driving sustainable development. Since our founding, we have worked hand-in-hand with communities to create lasting change from the ground up.</p>
+        <p class="section-sub section-sub-margin-top">Our programs span education, women empowerment, youth development, and humanitarian aid &mdash; all grounded in the belief that every individual deserves dignity and opportunity.</p>
+        <div class="mv-grid">
+          <div class="mv-card">
+            <h4>Our Mission</h4>
+            <p>To empower marginalized communities through inclusive programs that restore dignity and create sustainable livelihoods.</p>
+          </div>
+          <div class="mv-card">
+            <h4>Our Vision</h4>
+            <p>A just and peaceful society where every individual has access to rights, education, and opportunity.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOCUS AREAS ===== -->
+<section id="focus">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">What We Stand For</div>
+      <h2 class="section-title">Our Core Focus Areas</h2>
+      <p class="section-sub section-sub-center">Everything we do is guided by these foundational pillars that shape our programs, partnerships, and advocacy efforts.</p>
+    </div>
+    <div class="focus-grid">
+      <div class="focus-card reveal reveal-delay-1">
+        <div class="focus-icon peace"><i class="fas fa-dove"></i></div>
+        <h3>Peace & Reconciliation</h3>
+        <p>Promoting peaceful coexistence, conflict resolution, and community dialogue to build harmonious societies.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-2">
+        <div class="focus-icon rights"><i class="fas fa-balance-scale"></i></div>
+        <h3>Human Rights</h3>
+        <p>Advocating for the fundamental rights and dignity of all people, regardless of gender, ethnicity, or background.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-3">
+        <div class="focus-icon sustain"><i class="fas fa-seedling"></i></div>
+        <h3>Sustainable Development</h3>
+        <p>Implementing long-term programs that address root causes of poverty through economic empowerment and capacity building.</p>
+      </div>
+      <div class="focus-card reveal">
+        <div class="focus-icon edu"><i class="fas fa-book-open"></i></div>
+        <h3>Education Access</h3>
+        <p>Ensuring quality education reaches the most vulnerable children and youth, regardless of circumstance.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-1">
+        <div class="focus-icon youth"><i class="fas fa-users"></i></div>
+        <h3>Youth Leadership</h3>
+        <p>Cultivating the next generation of leaders through mentorship, skills training, and civic engagement.</p>
+      </div>
+      <div class="focus-card reveal reveal-delay-2">
+        <div class="focus-icon women"><i class="fas fa-venus"></i></div>
+        <h3>Women's Empowerment</h3>
+        <p>Advancing gender equality and women's economic, social, and political participation at all levels.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT WE DO ===== -->
+<section id="what-we-do">
+  <div class="container">
+    <div class="grid-two-cols reveal">
+      <div>
+        <div class="section-label">Our Programs</div>
+        <h2 class="section-title">What We Do on the Ground</h2>
+      </div>
+      <div>
+        <p class="section-sub">Our grassroots programs are designed to address the most pressing needs of communities while building resilient systems for lasting impact.</p>
+      </div>
+    </div>
+    <div class="wwd-grid margin-top-56">
+      <div class="wwd-card reveal">
+        <div class="wwd-num">01</div>
+        <div class="wwd-body">
+          <h3>Education & Scholarship Support</h3>
+          <p>Scholarships, school infrastructure support, teacher training, and digital literacy programs for underprivileged students.</p>
+        </div>
+      </div>
+      <div class="wwd-card reveal reveal-delay-1">
+        <div class="wwd-num">02</div>
+        <div class="wwd-body">
+          <h3>Youth Empowerment Initiatives</h3>
+          <p>Skills training, entrepreneurship bootcamps, mentorship programs, and civic engagement for young adults aged 16&ndash;30.</p>
+        </div>
+      </div>
+      <div class="wwd-card reveal reveal-delay-2">
+        <div class="wwd-num">03</div>
+        <div class="wwd-body">
+          <h3>Community Health Programs</h3>
+          <p>Health awareness camps, mental health support, maternal care, and clean water access programs in rural areas.</p>
+        </div>
+      </div>
+      <div class="wwd-card reveal reveal-delay-3">
+        <div class="wwd-num">04</div>
+        <div class="wwd-body">
+          <h3>Social Impact Research</h3>
+          <p>Publishing evidence-based research and policy briefs to inform government and NGO strategies for greater community impact.</p>
+        </div>
+      </div>
+      <div class="wwd-card reveal">
+        <div class="wwd-num">05</div>
+        <div class="wwd-body">
+          <h3>Humanitarian Relief</h3>
+          <p>Emergency food, medical aid, shelter, and rehabilitation support for disaster-affected and conflict-displaced communities.</p>
+        </div>
+      </div>
+      <div class="wwd-card reveal reveal-delay-1">
+        <div class="wwd-num">06</div>
+        <div class="wwd-body">
+          <h3>Women Empowerment Programs</h3>
+          <p>Vocational training, microfinancing, legal aid, and leadership development to uplift women in underserved communities.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="container">
+    <div class="flex-end-between-mb56 reveal">
+      <div>
+        <div class="section-label">Our Work</div>
+        <h2 class="section-title mb-0">Featured Projects</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline">View All <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="projects-grid">
+      <div class="project-card reveal">
+        <div class="project-img">
+          <img src='D:/Download/jasoor-welfare-foundation.html/assets/images/poster/10 X 8 copy.jpg.jpeg' alt="Islamic Awareness Program" />
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Islamic</span>
+          <h3>Islamic Awareness Program</h3>
+          <p>An Islamic awareness program focusing on strengthening faith, improving moral values, 
+    and providing guidance on Islamic practices. The session includes insightful speeches 
+    by renowned scholars to educate and inspire the community.</p>
+          <a href="featured-projects/islamic-awareness-program.html" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img">
+          <img src='D:/Download/jasoor-welfare-foundation.html/assets/images/poster/10X8 ramazan welcome copy.jpg.jpeg'alt="Ramadan Special Lecture" />
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Youth</span>
+          <h3>Ramadan Special Lecture</h3>
+          <p> A special Ramadan awareness program focused on the spiritual significance of the holy month, 
+    encouraging discipline, self-reflection, and strengthening faith among youth and the community. 
+    The session includes an inspiring speech by an experienced guest speaker.</p>
+          <a href="featured-projects/ramadan-special-lecture.html" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-2">
+        <div class="project-img">
+          <img src='D:/Download/jasoor-welfare-foundation.html/assets/images/poster/3 x 2 amp copy.jpg.jpeg' alt="Zakat Application Program" />
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Zakat</span>
+          <h3>Zakat Application Program</h3>
+          <p>A Zakat awareness initiative aimed at educating the community about the importance of charity, 
+    social responsibility, and supporting the needy. This program encourages individuals to contribute 
+    towards uplifting underprivileged families and creating a positive social impact.</p>
+          <a href="featured-projects/zakat-application-program.html" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card reveal">
+        <div class="project-img">
+          <img src='D:/Download/jasoor-welfare-foundation.html/assets/images/poster/ramalan kit copy.jpg.jpeg' alt="Social Impact Research" />
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Relief</span>
+          <h3>Ramadan Relief Kit Distribution</h3>
+          <p> A community-driven initiative providing essential Ramadan grocery kits to underprivileged families. 
+    This program ensures that families can observe the holy month with dignity and ease by supporting 
+    their basic food needs.</p>
+          <a href="featured-projects/ramadan-relief-kit.html" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+      <div class="project-card reveal reveal-delay-1">
+        <div class="project-img">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\poster\10x8 seminar class 1.jpg.jpeg"  alt="Online Awareness Seminar" />
+        </div>
+        <div class="project-body">
+          <span class="project-tag">Education</span>
+          <h3>Online Seminar</h3>
+          <p>A free online seminar focused on social development and knowledge sharing. 
+    This session aims to educate and inspire participants through meaningful discussions 
+    led by an experienced guest speaker.</p>
+          <a href="featured-projects/online-seminar.html" class="project-link">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EVENTS ===== -->
+<section id="events" style="background:linear-gradient(135deg,#010103 0%,#121418 55%,#090b10 100%);padding:82px 0;position:relative;overflow:hidden;">
+  <div class="container">
+    <div class="events-header reveal" style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px;margin-bottom:30px;">
+      <div>
+        <div class="section-label" style="letter-spacing:0.16em;color:rgba(253,224,70,0.88);text-transform:uppercase;font-size:0.82rem;font-weight:700;margin-bottom:6px;">What’s Happening</div>
+        <h2 class="section-title mb-0" style="font-size:2.6rem;color:#fff;line-height:1.15;">Events Flipbook</h2>
+      </div>
+      <div class="flip-controls">
+        <button id="prevPage" class="flip-btn" aria-label="Previous page">←</button>
+        <span id="pageIndicator" class="page-indicator">1 / 20</span>
+        <button id="nextPage" class="flip-btn" aria-label="Next page">→</button>
+      </div>
+    </div>
+
+    <div class="book-wrap">
+      <div class="book-shadow-left"></div>
+      <div class="book-shadow-right"></div>
+      <div class="book-pages" id="bookPages">
+        <div class="page side-left" id="pageLeft">
+          <div class="page-content"><img id="imgLeft" src="" alt="Event page" /></div>
+        </div>
+        <div class="page side-right" id="pageRight">
+          <div class="page-content"><img id="imgRight" src="" alt="Event page" /></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="autoflip-wrap">
+      <button id="autoFlip" class="flip-btn secondary">Auto Flip</button>
+    </div>
+  </div>
+</section>
+
+<style>
+  #events {color:#fff;}
+  .flip-controls {display:flex;align-items:center;gap:12px;}
+  .flip-btn {background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.26);border-radius:10px;padding:10px 16px;font-size:0.95rem;font-weight:600;cursor:pointer;transition:all .25s ease;backdrop-filter: none;}
+  .flip-btn:hover {background:rgba(255,255,255,0.2);transform:translateY(-1px);}
+  .flip-btn.secondary {background:rgba(255,255,255,0.08);border-color:rgba(255,255,255,0.16);}
+  .page-indicator {font-size:0.9rem;font-weight:600;color:rgba(255,255,255,.9);}
+
+  .book-wrap {position:relative;display:grid;place-items:center;width:100%;max-width:1160px;margin:0 auto;min-height:420px;}
+  .book-shadow-left, .book-shadow-right {position:absolute;top:24px;bottom:24px;width:60px;border-radius:14px;z-index:1;background:linear-gradient(90deg,rgba(5,5,5,.45),rgba(5,5,5,0));pointer-events:none;}
+  .book-shadow-left {left:16px;}
+  .book-shadow-right {right:16px;transform:rotate(180deg);}
+
+  .book-pages {position:relative;display:grid;grid-template-columns:repeat(2,1fr);gap:20px;z-index:2;}
+  .page {position:relative;width:100%;max-width:540px;height:360px;background:linear-gradient(145deg,rgba(18, 7, 7, 0.95),rgba(13, 1, 1, 0.95));border-radius:16px;box-shadow:0 20px 45px rgba(0,0,0,0.35);border:1px solid rgba(255,255,255,0.14);overflow:hidden;transform-origin:center center;transition:transform .45s ease, box-shadow .45s ease;}
+  .page:hover {transform:translateY(-4px);box-shadow:0 24px 50px rgba(0,0,0,0.45);}
+
+  .page-content {width:100%;height:100%;display:flex;align-items:center;justify-content:center;padding:10px;}
+  .page-content img {max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 12px 24px rgba(0,0,0,0.35);background:#fff;}
+
+  .autoflip-wrap {margin-top:16px;text-align:center;}
+
+  .book-pages.turning .page {transform: perspective(1200px) rotateY(-10deg);}
+
+  @media (max-width: 980px) {
+    .book-pages {grid-template-columns:1fr;}
+    .page {max-width:760px;height:320px;}
+  }
+  @media (max-width: 620px) {
+    .book-wrap {min-height:320px;}
+    .page {height:280px;}
+    .flip-controls {justify-content:center;}
+    .book-shadow-left, .book-shadow-right {display:none;}
+  }
+</style>
+
+<script>
+  const eventImages = [
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 1.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 2.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 3.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 4.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 5.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 6.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 7.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 8.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 9.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 10.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 11.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 12.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 13.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 14.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 15.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 16.jpeg'} ,
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 17.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 18.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 19.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 20.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 21.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 22.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 23.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 24.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 25.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 26.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 27.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 28.jpeg'},
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\book image\\fp 29.jpeg'}, 
+    { src: 'D:\\Download\\jasoor-welfare-foundation.html\\assets\\images\\main\\THANK YOU.png'}   
+  ];
+
+  const leftImg = document.getElementById('imgLeft');
+  const rightImg = document.getElementById('imgRight');
+  const pageIndicator = document.getElementById('pageIndicator');
+  const bookPages = document.getElementById('bookPages');
+
+  let curIndex = 0;
+  const pagesTotal = eventImages.length;
+  let autoFlipInterval = null;
+
+  function renderPages() {
+    const leftIndex = curIndex;
+    const rightIndex = (curIndex + 1) % pagesTotal;
+
+    leftImg.src = eventImages[leftIndex].src;
+    leftImg.alt = eventImages[leftIndex].label;
+    rightImg.src = eventImages[rightIndex].src;
+    rightImg.alt = eventImages[rightIndex].label;
+
+    pageIndicator.textContent = `${Math.ceil((curIndex + 2) / 2)} / ${Math.ceil(pagesTotal / 2)}`;
+    bookPages.classList.add('turning');
+    setTimeout(() => bookPages.classList.remove('turning'), 450);
+  }
+
+  function nextPage() {
+    curIndex = (curIndex + 2) % pagesTotal;
+    renderPages();
+  }
+
+  function prevPage() {
+    curIndex = (curIndex - 2 + pagesTotal) % pagesTotal;
+    renderPages();
+  }
+
+  document.getElementById('nextPage').addEventListener('click', nextPage);
+  document.getElementById('prevPage').addEventListener('click', prevPage);
+
+  document.getElementById('autoFlip').addEventListener('click', function () {
+    if (autoFlipInterval) {
+      clearInterval(autoFlipInterval);
+      autoFlipInterval = null;
+      this.textContent = 'Auto Flip';
+      return;
+    }
+    this.textContent = 'Stop Auto';
+    autoFlipInterval = setInterval(nextPage, 2600);
+  });
+
+  let touchStartX = 0;
+  const bookWrap = document.querySelector('.book-wrap');
+  bookWrap.addEventListener('touchstart', (e) => (touchStartX = e.changedTouches[0].clientX));
+  bookWrap.addEventListener('touchend', (e) => {
+    const touchEndX = e.changedTouches[0].clientX;
+    if (touchEndX - touchStartX > 45) prevPage();
+    else if (touchStartX - touchEndX > 45) nextPage();
+  });
+
+  renderPages();
+</script>
+
+<!-- ===== TEAM ===== -->
+<section id="team">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">Our People</div>
+      <h2 class="section-title">Leadership & Team</h2>
+      <p class="section-sub section-sub-center">Meet the dedicated individuals who drive our mission forward every single day.</p>
+    </div>
+    <div class="team-grid">
+      <div class="team-card reveal reveal-delay-1" data-email="" data-phone="">
+        <div class="team-avatar">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\team\AI 3.jpeg" alt="Abu Bakkar Siddick T Professional Headshot" class="team-avatar-img" style="width:100%;height:100%;object-fit:cover;background:#fff;" />
+        </div>
+        <div class="team-body">
+          <h3>Abu Bakkar Siddick T</h3>
+          <p>President</p>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-2" data-email="" data-phone="">
+        <div class="team-avatar">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\team\AI 2.jpeg" alt="Shalik Ahamed N Professional Headshot" class="team-avatar-img" style="width:100%;height:100%;object-fit:cover;background:#fff;" />
+        </div>
+        <div class="team-body">
+          <h3>Shalik Ahamed N</h3>
+          <p>Secretary</p>
+        </div>
+      </div>
+      <div class="team-card reveal reveal-delay-3" data-email="" data-phone="">
+        <div class="team-avatar">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\team\AI 1.jpeg" alt="Mohamed Ashali A Professional Headshot" class="team-avatar-img" style="width:100%;height:100%;object-fit:cover;background:#fff;" />
+        </div>
+        <div class="team-body">
+          <h3>Mohamed Ashali A</h3>
+          <p>Treasurer</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== BLOG ===== -->
+<section id="blog">
+  <div class="container">
+    <div class="flex-end-between-mb56 reveal">
+      <div>
+        <div class="section-label">Latest Updates</div>
+        <h2 class="section-title mb-0">From Our Blog</h2>
+      </div>
+      <a href="#contact" class="btn btn-outline">All Articles <i class="fas fa-arrow-right"></i></a>
+    </div>
+    <div class="blog-grid">
+      <div class="blog-card reveal">
+        <div class="blog-img">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\blogs\sus.png" alt="Sustainability" class="blog-img-ph blog-img-1">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Sustainability</div>
+          <div class="blog-title-with-image">
+            <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\blogs\sus1.png"alt="Sustainability" class="blog-title-img">
+            <h3>Ending Poverty Through Sustainable Action</h3>
+          </div>
+          <p>Sustainable initiatives are helping reduce poverty by creating jobs, improving access to resources, and empowering communities for a better future.</p>
+          <div class="blog-footer">
+            <span class="blog-date"><i class="fas fa-calendar-alt"></i> March 10, 2025</span>
+            <span class="blog-read">Read More &rarr;</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-1">
+        <div class="blog-img">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\blogs\hr.png" class="blog-img-ph blog-img-2">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Human Rights</div>
+          <div class="blog-title-with-image">
+            <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\blogs\hr1.jpg" alt="Human Rights" class="blog-title-img">
+            <h3>Justice and Human Rights for All</h3>
+          </div>
+          <p>Promoting justice, equality, and human rights ensures a fair and inclusive society where everyone has the freedom, dignity, and opportunity to thrive.</p>
+          <div class="blog-footer">
+            <span class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 28, 2025</span>
+            <span class="blog-read">Read More &rarr;</span>
+          </div>
+        </div>
+      </div>
+      <div class="blog-card reveal reveal-delay-2">
+        <div class="blog-img">
+          <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\blogs\ed.jpg" alt="Education" class="blog-img-ph blog-img-3">
+        </div>
+        <div class="blog-body">
+          <div class="blog-cat">Education</div>
+          <div class="blog-title-with-image">
+            <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\blogs\ed1.png" alt="Education" class="blog-title-img">
+            <h3>Empowering Futures Through Scholarships</h3>
+          </div>
+          <p>Scholarship programs are helping first-generation students access quality education, break barriers, and build brighter futures for themselves and their communities.</p>
+          <div class="blog-footer">
+            <span class="blog-date"><i class="fas fa-calendar-alt"></i> Feb 14, 2025</span>
+            <span class="blog-read">Read More &rarr;</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DONATE SECTION ===== -->
+<section id="donate">
+  <div class="container">
+    <div class="donate-inner">
+      <div class="donate-left reveal">
+        <div class="section-label section-label-accent">Make a Difference</div>
+        <h2 class="section-title">Your Generosity<br>Changes Lives</h2>
+        <p class="section-sub">Every contribution, no matter the size, directly funds programs that uplift communities and protect human dignity. Join thousands of donors who trust Jasoor Welfare Foundation.</p>
+        <div class="donate-features">
+          <div class="donate-feat"><i class="fas fa-check-circle"></i> 100% Transparent Fund Allocation</div>
+          <div class="donate-feat"><i class="fas fa-check-circle"></i> Tax-Exempt Contributions</div>
+          <div class="donate-feat"><i class="fas fa-check-circle"></i> Regular Impact Reports for Donors</div>
+          <div class="donate-feat"><i class="fas fa-check-circle"></i> Registered & Accredited NGO</div>
+        </div>
+      </div>
+      <div class="donate-form-wrap reveal reveal-delay-1">
+        <h3>Donate Today</h3>
+        <p>Fill out the form below and our team will reach out to confirm your contribution.</p>
+        <div class="amount-grid" id="amountGrid">
+          <button class="amount-btn" type="button" onclick="selectAmount(this,'INR 1,000')">INR 1,000</button>
+          <button class="amount-btn selected" type="button" onclick="selectAmount(this,'INR 5,000')">INR 5,000</button>
+          <button class="amount-btn" type="button" onclick="selectAmount(this,'INR 10,000')">INR 10,000</button>
+          <button class="amount-btn" type="button" onclick="selectAmount(this,'INR 25,000')">INR 25,000</button>
+          <button class="amount-btn" type="button" onclick="selectAmount(this,'INR 50,000')">INR 50,000</button>
+          <button class="amount-btn" type="button" onclick="selectAmount(this,'Custom')">Custom</button>
+        </div>
+        <div id="donateFormContent">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="d-name">Full Name *</label>
+              <input type="text" class="form-input" id="d-name" name="donorName" placeholder="Your name" />
+              <div class="form-error" id="d-name-err">Please enter your name</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="d-email">Email *</label>
+              <input type="email" class="form-input" id="d-email" name="donorEmail" placeholder="your@email.com" />
+              <div class="form-error" id="d-email-err">Please enter a valid email</div>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="d-phone">Phone</label>
+              <input type="tel" class="form-input" id="d-phone" name="donorPhone" placeholder="+92 300 000 0000" />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="d-amount">Amount (Optional)</label>
+              <input type="text" class="form-input" id="d-amount" name="donationAmount" placeholder="INR 5,000" value="INR 5,000" />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label" for="d-msg">Message (Optional)</label>
+            <textarea class="form-input" id="d-msg" name="donationMessage" placeholder="Any message or cause preference..."></textarea>
+          </div>
+          <button class="btn btn-primary btn-full-center" type="button" onclick="submitDonate()">
+            <i class="fas fa-heart"></i> Confirm Donation
+          </button>
+        </div>
+        <div class="form-success" id="donateSuccess">
+          <i class="fas fa-check-circle"></i>
+          <h4 class="text-white">Thank You!</h4>
+          <p>Your donation request has been received. Our team will contact you shortly to confirm.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== JOIN US ===== -->
+<section id="join">
+  <div class="container">
+    <div class="join-inner">
+      <div class="reveal">
+        <div class="section-label">Get Involved</div>
+        <h2 class="section-title">Join Our Growing Community</h2>
+        <p class="section-sub">Volunteers, advocates, and professionals &mdash; everyone has a role to play. Whether you can give time, skills, or resources, we welcome you.</p>
+        <div class="flex-col-gap20-mt32">
+          <div class="flex-gap14-start">
+            <div class="icon-box"><i class="fas fa-hand-holding-heart"></i></div>
+            <div><h4 class="h4-small">Volunteer</h4><p class="p-small">Give your time and skills to directly support our programs and beneficiaries.</p></div>
+          </div>
+          <div class="flex-gap14-start">
+            <div class="icon-box"><i class="fas fa-bullhorn"></i></div>
+            <div><h4 class="h4-small">Advocate</h4><p class="p-small">Amplify our voice and spread awareness about critical social issues.</p></div>
+          </div>
+          <div class="flex-gap14-start">
+            <div class="icon-box"><i class="fas fa-briefcase"></i></div>
+            <div><h4 class="h4-small">Partner</h4><p class="p-small">Organizations and institutions can partner with us to scale our collective impact.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="join-right reveal reveal-delay-1">
+        <h3>Volunteer With Us</h3>
+        <p>Fill out the form and we'll get in touch with the right opportunity for you.</p>
+        <div id="joinFormContent">
+          <div class="form-group">
+            <label class="form-label-dark form-label" for="j-name">Full Name *</label>
+            <input type="text" class="form-input form-input-light" id="j-name" name="joinName" placeholder="Your full name" />
+            <div class="form-error" id="j-name-err">Please enter your name</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label-dark form-label" for="j-email">Email Address *</label>
+            <input type="email" class="form-input form-input-light" id="j-email" name="joinEmail" placeholder="your@email.com" />
+            <div class="form-error" id="j-email-err">Please enter a valid email</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label-dark form-label" for="j-role">Area of Interest *</label>
+            <select class="form-input form-input-light" id="j-role" name="joinRole">
+              <option value="">Select your interest...</option>
+              <option>Volunteer &ndash; Field Programs</option>
+              <option>Volunteer &ndash; Administrative</option>
+              <option>Advocacy & Communications</option>
+              <option>Research & Policy</option>
+              <option>Fundraising & Events</option>
+              <option>Institutional Partnership</option>
+              <option>Other</option>
+            </select>
+            <div class="form-error" id="j-role-err">Please select an interest</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label-dark form-label" for="j-msg">Message</label>
+            <textarea class="form-input form-input-light" id="j-msg" name="joinMessage" placeholder="Tell us about yourself and how you'd like to contribute..."></textarea>
+          </div>
+          <button class="btn btn-primary btn-full-center" type="button" onclick="submitJoin()">
+            <i class="fas fa-paper-plane"></i> Submit Application
+          </button>
+        </div>
+        <div class="form-success form-success-text" id="joinSuccess">
+          <i class="fas fa-check-circle icon-accent2"></i>
+          <h4 class="h4-text">Application Received!</h4>
+          <p class="p-text2">Thank you for your interest. Our team will reach out to you shortly.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="container">
+    <div class="text-center reveal">
+      <div class="section-label">Get in Touch</div>
+      <h2 class="section-title">Contact Us</h2>
+      <p class="section-sub section-sub-center">We'd love to hear from you &mdash; whether it's a question, partnership inquiry, or media request.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info reveal">
+        <h3>Reach Out to Us</h3>
+        <div class="contact-items">
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-map-marker-alt"></i></div>
+            <div>
+              <h4>HEAD OFFICE</h4>
+              <p>MELATHANIYAM, PUDUKKOTTAI(DT),TAMIL NADU, PINCODE - 622002</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-phone"></i></div>
+            <div>
+              <h4>PHONE</h4>
+              <p>+91 94888 22903</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+            <div>
+              <h4>EMAIL</h4>
+              <p>jasoorwelfarefoundation@gmail.com</p>
+            </div>
+          </div>
+          <div class="contact-item">
+            <div class="contact-icon"><i class="fas fa-clock"></i></div>
+            <div>
+              <h4>OFFICE HOURS</h4>
+              <p>Mon &ndash; Sat: 9:00 AM &ndash; 9:00 PM</p>
+            </div>
+          </div>
+        </div>
+        <div class="map-embed">
+          <div class="text-center">
+            <i class="fas fa-map-marked-alt icon-large"></i>
+            <span></span>
+            <div style="margin-top:10px;"><a href="https://maps.app.goo.gl/H31VCqFKuVsiz3zy9" target="_blank" rel="noopener noreferrer" class="btn btn-outline">Open on Google Maps</a></div>
+          </div>
+          <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3620.5797994804354!2d67.00081427563693!3d24.86073468403504!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb33e787a3c2ad1%3A0x4baf9452a8e9a1f6!2sKarachi%2C%20Pakistan!5e0!3m2!1sen!2s!4v1730000000000" width="100%" height="250" style="border:0; margin-top:12px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+      </div>
+      <div class="contact-form-wrap reveal reveal-delay-1">
+        <h3>Connect with Our Team</h3>
+        <div id="contactFormContent">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label-dark form-label" for="c-name">Name *</label>
+              <input type="text" class="form-input form-input-light" id="c-name" name="contactName" placeholder="Your name" />
+              <div class="form-error" id="c-name-err">Please enter your name</div>
+            </div>
+            <div class="form-group">
+              <label class="form-label-dark form-label" for="c-email">Email *</label>
+              <input type="email" class="form-input form-input-light" id="c-email" name="contactEmail" placeholder="your@email.com" />
+              <div class="form-error" id="c-email-err">Valid email required</div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label-dark form-label" for="c-sub">Subject *</label>
+            <input type="text" class="form-input form-input-light" id="c-sub" name="contactSubject" placeholder="What is this regarding?" />
+            <div class="form-error" id="c-sub-err">Please enter a subject</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label-dark form-label" for="c-msg">Message *</label>
+            <textarea class="form-input form-input-light" id="c-msg" name="contactMessage" rows="5" placeholder="Write your message here..."></textarea>
+            <div class="form-error" id="c-msg-err">Please enter your message</div>
+          </div>
+          <button class="btn btn-primary btn-full-center" type="button" onclick="submitContact()">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+        </div>
+        <div class="form-success form-success-text" id="contactSuccess">
+          <i class="fas fa-check-circle icon-accent2"></i>
+          <h4 class="h4-text">Message Sent!</h4>
+          <p class="p-text2">Thank you for contacting us. We'll get back to you within 48 hours.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="#hero" class="nav-logo nav-logo-mb" aria-label="Jasoor Welfare Foundation home">
+          <div class="nav-logo-icon">
+            <img src="D:\Download\jasoor-welfare-foundation.html\assets\images\main\jwf logo.jpeg" alt="Jasoor Welfare Foundation Logo">
+          </div>
+          <div class="nav-logo-text nav-text">Jasoor Welfare<span class="nav-span">Foundation</span></div>
+        </a>
+        <p class="footer-desc">Jasoor Welfare Foundation is committed to building peaceful, just, and prosperous communities through evidence-based programs and heartfelt service since 2025.</p>
+        <div class="footer-socials">
+        <a href="https://www.facebook.com/share/1CGm2R8zF1/" target="_blank" class="footer-social" title="Facebook" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i></a>
+
+        <a href="https://www.instagram.com/jasoor_welfare_foundation?igsh=MTBpemlpb2pyZzU5cQ==" target="_blank" class="footer-social" title="Instagram" aria-label="Instagram">
+        <i class="fab fa-instagram"></i></a>
+
+        <a href="https://wa.me/qr/P3KPBQ6QIT7IJ1" target="_blank" class="footer-social" title="WhatsApp" aria-label="WhatsApp">
+        <i class="fab fa-whatsapp"></i></a>
+
+        <a href="https://www.linkedin.com/in/jasoor-welfare-foundation-jwf-a6880b3b8?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="footer-social" title="LinkedIn" aria-label="LinkedIn">
+        <i class="fab fa-linkedin-in"></i></a>
+
+        <a href="https://youtube.com/@jasoor_jwf?si=g-UwCjKCMsPxA6S2" target="_blank" class="footer-social" title="YouTube" aria-label="YouTube">
+        <i class="fab fa-youtube"></i>
+        </a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <div class="footer-links">
+          <a href="#hero">Home</a>
+          <a href="#about">About Us</a>
+          <a href="#projects">Projects</a>
+          <a href="#events">Events</a>
+          <a href="#blog">Blog</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Programs</h4>
+        <div class="footer-links">
+          <a href="#focus">Women Empowerment</a>
+          <a href="#focus">Youth Development</a>
+          <a href="#focus">Education</a>
+          <a href="#what-we-do">Humanitarian Aid</a>
+          <a href="#what-we-do">Health Programs</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Get Involved</h4>
+        <div class="footer-links">
+          <a href="#donate">Donate</a>
+          <a href="#join">Volunteer</a>
+          <a href="#contact">Partner With Us</a>
+          <a href="#contact">Media & Press</a>
+          <a href="#blog">Annual Reports</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; 2025 Jasoor Welfare Foundation. All rights reserved. Registered NGO.</p>
+      <div class="footer-legal">
+        <a href="#footer">Privacy Policy</a>
+        <a href="#footer">Terms of Use</a>
+        <a href="#footer">Disclaimer</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ===== DONATE MODAL ===== -->
+<div class="modal-overlay" id="donateModal" aria-hidden="true">
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="donateModalTitle">
+    <button class="modal-close" type="button" onclick="closeModal('donateModal')" aria-label="Close donation form"><i class="fas fa-times"></i></button>
+    <h3 id="donateModalTitle">Make a Donation</h3>
+    <p>Your support powers our mission. Fill out the form below.</p>
+    <div id="modalDonateContent">
+      <div class="amount-grid">
+        <button class="amount-btn" type="button" onclick="selectModalAmount(this,'INR 1,000')">INR 1,000</button>
+        <button class="amount-btn selected" type="button" onclick="selectModalAmount(this,'INR 5,000')">INR 5,000</button>
+        <button class="amount-btn" type="button" onclick="selectModalAmount(this,'INR 10,000')">INR 10,000</button>
+        <button class="amount-btn" type="button" onclick="selectModalAmount(this,'INR 25,000')">INR 25,000</button>
+        <button class="amount-btn" type="button" onclick="selectModalAmount(this,'INR 50,000')">INR 50,000</button>
+        <button class="amount-btn" type="button" onclick="selectModalAmount(this,'Custom')">Custom</button>
+      </div>
+      <div class="form-group">
+        <label class="form-label-dark form-label" for="md-name">Name *</label>
+        <input type="text" class="form-input form-input-light" id="md-name" name="modalDonorName" placeholder="Your full name" />
+        <div class="form-error" id="md-name-err">Please enter your name</div>
+      </div>
+      <div class="form-group">
+        <label class="form-label-dark form-label" for="md-email">Email *</label>
+        <input type="email" class="form-input form-input-light" id="md-email" name="modalDonorEmail" placeholder="your@email.com" />
+        <div class="form-error" id="md-email-err">Valid email required</div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label-dark form-label" for="md-phone">Phone</label>
+          <input type="tel" class="form-input form-input-light" id="md-phone" name="modalDonorPhone" placeholder="+92 300 000 0000" />
+        </div>
+        <div class="form-group">
+          <label class="form-label-dark form-label" for="md-amount">Amount</label>
+          <input type="text" class="form-input form-input-light" id="md-amount" name="modalDonationAmount" value="INR 5,000" placeholder="INR 5,000" />
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="form-label-dark form-label" for="md-msg">Message (Optional)</label>
+        <textarea class="form-input form-input-light" id="md-msg" name="modalDonationMessage" rows="3" placeholder="Any message..."></textarea>
+      </div>
+      <button class="btn btn-primary btn-full-center" type="button" onclick="submitModalDonate()">
+        <i class="fas fa-heart"></i> Confirm Donation
+      </button>
+    </div>
+    <div class="form-success form-success-text" id="modalDonateSuccess">
+      <i class="fas fa-check-circle icon-large-accent2"></i>
+      <h4 class="h4-large-text">Thank You!</h4>
+      <p class="p-text2">Your donation request has been received. Our team will be in touch soon.</p>
+    </div>
+  </div>
+</div>
+
+<!-- Back to Top -->
+<button id="back-top" type="button" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="Back to top" aria-label="Back to top">
+  <i class="fas fa-chevron-up"></i>
+</button>
+
+<script>
+// ===== THEME =====
+const html = document.documentElement;
+const themeToggle = document.getElementById('themeToggle');
+let dark = html.getAttribute('data-theme') === 'dark';
+themeToggle.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+themeToggle.setAttribute('aria-pressed', String(dark));
+themeToggle.addEventListener('click', () => {
+  dark = !dark;
+  html.setAttribute('data-theme', dark ? 'dark' : 'light');
+  themeToggle.innerHTML = dark ? '<i class="fas fa-sun"></i>' : '<i class="fas fa-moon"></i>';
+  themeToggle.setAttribute('aria-pressed', String(dark));
+});
+
+// ===== NAVBAR SCROLL =====
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 40);
+  document.getElementById('back-top').classList.toggle('visible', window.scrollY > 400);
+});
+
+// ===== HAMBURGER =====
+const hamburger = document.getElementById('hamburger');
+const mobileNav = document.getElementById('mobileNav');
+hamburger.addEventListener('click', () => {
+  const isOpen = mobileNav.classList.toggle('open');
+  hamburger.setAttribute('aria-expanded', String(isOpen));
+  hamburger.setAttribute('aria-label', isOpen ? 'Close menu' : 'Open menu');
+  mobileNav.setAttribute('aria-hidden', String(!isOpen));
+});
+function closeMobile() {
+  mobileNav.classList.remove('open');
+  hamburger.setAttribute('aria-expanded', 'false');
+  hamburger.setAttribute('aria-label', 'Open menu');
+  mobileNav.setAttribute('aria-hidden', 'true');
+}
+
+// ===== TEAM CONTACT POPUP TOGGLE =====
+const clickableAvatars = document.querySelectorAll('.team-avatar.clickable-avatar');
+clickableAvatars.forEach(avatar => {
+  avatar.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const card = avatar.closest('.team-card');
+    card.classList.toggle('active');
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.team-card')) {
+    document.querySelectorAll('.team-card.active').forEach(c => c.classList.remove('active'));
+  }
+});
+
+// ===== HERO SLIDER =====
+const slides = document.querySelectorAll('.slide');
+const heroNav = document.getElementById('heroNav');
+let currentSlide = 0, sliderTimer;
+
+slides.forEach((_, i) => {
+  const dot = document.createElement('button');
+  dot.type = 'button';
+  dot.className = 'hero-dot' + (i === 0 ? ' active' : '');
+  dot.setAttribute('aria-label', 'Slide ' + (i+1));
+  dot.addEventListener('click', () => goToSlide(i));
+  heroNav.appendChild(dot);
+});
+
+function goToSlide(n) {
+  slides[currentSlide].classList.remove('active');
+  heroNav.children[currentSlide].classList.remove('active');
+  currentSlide = (n + slides.length) % slides.length;
+  slides[currentSlide].classList.add('active');
+  heroNav.children[currentSlide].classList.add('active');
+  document.getElementById('slidesTrack').style.transform = `translateX(-${currentSlide * 100}%)`;
+  clearInterval(sliderTimer);
+  sliderTimer = setInterval(() => goToSlide(currentSlide + 1), 6000);
+}
+function changeSlide(dir) { goToSlide(currentSlide + dir); }
+sliderTimer = setInterval(() => goToSlide(currentSlide + 1), 6000);
+
+// ===== EVENTS FILTER =====
+function filterYear(year) {
+  document.querySelectorAll('.year-btn').forEach(b => b.classList.remove('active'));
+  const allBtns = document.querySelectorAll('.year-btn');
+  allBtns.forEach(b => { if(b.textContent.trim() === year || (year === 'all' && b.textContent.trim() === 'All')) b.classList.add('active'); });
+  document.querySelectorAll('.event-card').forEach(card => {
+    card.style.display = (year === 'all' || card.dataset.year === year) ? 'flex' : 'none';
+  });
+}
+
+// ===== AMOUNT SELECTION =====
+function selectAmount(btn, val) {
+  document.querySelectorAll('#amountGrid .amount-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('d-amount').value = val === 'Custom' ? '' : val;
+}
+function selectModalAmount(btn, val) {
+  btn.closest('.amount-grid').querySelectorAll('.amount-btn').forEach(b => b.classList.remove('selected'));
+  btn.classList.add('selected');
+  document.getElementById('md-amount').value = val === 'Custom' ? '' : val;
+}
+
+// ===== FORM VALIDATION HELPERS =====
+function showErr(id, show) {
+  const el = document.getElementById(id);
+  if(el) el.classList.toggle('show', show);
+}
+function validateEmail(e) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e); }
+
+// ===== FORM SUBMISSIONS =====
+function submitDonate() {
+  const name = document.getElementById('d-name').value.trim();
+  const email = document.getElementById('d-email').value.trim();
+  let ok = true;
+  showErr('d-name-err', !name); if(!name) ok = false;
+  showErr('d-email-err', !validateEmail(email)); if(!validateEmail(email)) ok = false;
+  if(ok) {
+    document.getElementById('donateFormContent').style.display = 'none';
+    document.getElementById('donateSuccess').classList.add('show');
+  }
+}
+function submitJoin() {
+  const name = document.getElementById('j-name').value.trim();
+  const email = document.getElementById('j-email').value.trim();
+  const role = document.getElementById('j-role').value;
+  let ok = true;
+  showErr('j-name-err', !name); if(!name) ok = false;
+  showErr('j-email-err', !validateEmail(email)); if(!validateEmail(email)) ok = false;
+  showErr('j-role-err', !role); if(!role) ok = false;
+  if(ok) {
+    document.getElementById('joinFormContent').style.display = 'none';
+    document.getElementById('joinSuccess').classList.add('show');
+  }
+}
+function submitContact() {
+  const name = document.getElementById('c-name').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const sub = document.getElementById('c-sub').value.trim();
+  const msg = document.getElementById('c-msg').value.trim();
+  let ok = true;
+  showErr('c-name-err', !name); if(!name) ok = false;
+  showErr('c-email-err', !validateEmail(email)); if(!validateEmail(email)) ok = false;
+  showErr('c-sub-err', !sub); if(!sub) ok = false;
+  showErr('c-msg-err', !msg); if(!msg) ok = false;
+  if(ok) {
+    document.getElementById('contactFormContent').style.display = 'none';
+    document.getElementById('contactSuccess').classList.add('show');
+  }
+}
+function submitModalDonate() {
+  const name = document.getElementById('md-name').value.trim();
+  const email = document.getElementById('md-email').value.trim();
+  let ok = true;
+  showErr('md-name-err', !name); if(!name) ok = false;
+  showErr('md-email-err', !validateEmail(email)); if(!validateEmail(email)) ok = false;
+  if(ok) {
+    document.getElementById('modalDonateContent').style.display = 'none';
+    document.getElementById('modalDonateSuccess').classList.add('show');
+  }
+}
+
+// ===== MODAL =====
+function openModal(id) {
+  const modal = document.getElementById(id);
+  modal.classList.add('open');
+  modal.setAttribute('aria-hidden', 'false');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(id) {
+  const modal = document.getElementById(id);
+  modal.classList.remove('open');
+  modal.setAttribute('aria-hidden', 'true');
+  document.body.style.overflow = '';
+}
+document.querySelectorAll('.modal-overlay').forEach(overlay => {
+  overlay.addEventListener('click', e => { if(e.target === overlay) closeModal(overlay.id); });
+});
+document.addEventListener('keydown', e => {
+  if(e.key === 'Escape') document.querySelectorAll('.modal-overlay.open').forEach(m => closeModal(m.id));
+});
+
+// ===== SCROLL REVEAL =====
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if(entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// ===== SMOOTH ACTIVE NAV =====
+const navLinks = document.querySelectorAll('.nav-link[href^="#"]');
+const sections = [...navLinks]
+  .map(link => document.getElementById(link.getAttribute('href').slice(1)))
+  .filter(Boolean);
+window.addEventListener('scroll', () => {
+  let current = sections[0]?.id || '';
+  sections.forEach(s => {
+    if(window.scrollY >= s.offsetTop - 100) current = s.id;
+  });
+  navLinks.forEach(link => {
+    link.classList.remove('active');
+    if(link.getAttribute('href') === '#' + current) link.classList.add('active');
+  });
+});
+</script>
+</body>
+</html>
